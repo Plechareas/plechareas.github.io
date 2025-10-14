@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petros Lechareas | Data Science & AI</title>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
     /* ---------- GLOBAL ---------- */
     :root {
@@ -12,6 +16,7 @@
       --text-color: #222;
       --secondary-text: #555;
       --card-bg: #fff;
+      --highlight-color: #444;
     }
 
     * {
@@ -81,6 +86,14 @@
 
     nav a {
       font-weight: 500;
+      color: var(--secondary-text);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a.active {
+      color: var(--highlight-color);
+      font-weight: 600;
     }
 
     /* ---------- HERO SECTION ---------- */
@@ -146,6 +159,23 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .social-icons a {
+      color: var(--accent-color);
+      transition: transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1);
+      color: var(--highlight-color);
+    }
+
     /* ---------- SKILLS SECTION ---------- */
     .skills {
       padding: 4rem 5%;
@@ -162,8 +192,8 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
       max-width: 900px;
       margin: auto;
       text-align: center;
@@ -201,7 +231,7 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       max-width: 1000px;
       margin: auto;
@@ -244,6 +274,11 @@
         flex-direction: column;
         text-align: center;
       }
+
+      .social-icons {
+        justify-content: center;
+      }
+
       .hero img {
         width: 180px;
         height: 180px;
@@ -257,7 +292,7 @@
     <div class="logo">Petros Lechareas</div>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" class="active">Home</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -270,6 +305,13 @@
     <div class="hero-text">
       <h1>Hi, I'm Petros</h1>
       <h2>Data Science & AI Master's Student & ML Developer</h2>
+
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Plechareas" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:lecharesp@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+
       <p>
         Passionate about leveraging data-driven insights and machine learning
         techniques to solve real-world problems. Dedicated to continuous
@@ -277,6 +319,7 @@
       </p>
       <a href="mailto:lecharesp@gmail.com" class="btn">Contact Me</a>
     </div>
+
     <div class="hero-image">
       <img src="your-photo.jpg" alt="Petros Lechareas" />
     </div>
@@ -303,11 +346,11 @@
     <div class="project-grid">
       <div class="project-card">
         <h3><a href="https://github.com/Plechareas/ML-Projects" target="_blank">ML Projects</a></h3>
-        <p>Collection of machine learning experiments and notebooks showcasing model development and evaluation.</p>
+        <p>Machine learning experiments showcasing model development and evaluation.</p>
       </div>
       <div class="project-card">
         <h3><a href="https://github.com/Plechareas/Data-Science-Portfolio" target="_blank">Data Science Portfolio</a></h3>
-        <p>Data analysis, feature engineering, and visualization projects demonstrating data insights extraction.</p>
+        <p>Data analysis and visualization projects demonstrating insights extraction.</p>
       </div>
       <div class="project-card">
         <h3><a href="https://github.com/Plechareas" target="_blank">More on GitHub</a></h3>
@@ -330,10 +373,10 @@
     </p>
   </footer>
 
-  <!-- ---------- ANIMATION SCRIPT ---------- -->
+  <!-- ---------- ANIMATION + NAV HIGHLIGHT SCRIPT ---------- -->
   <script>
+    // Fade-in animation
     const sections = document.querySelectorAll(".hero, .skills, .projects");
-
     const appearOnScroll = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach(entry => {
@@ -345,8 +388,27 @@
       },
       { threshold: 0.2 }
     );
-
     sections.forEach(section => appearOnScroll.observe(section));
+
+    // Active navbar highlight
+    const navLinks = document.querySelectorAll("nav a");
+    const pageSections = document.querySelectorAll("section");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      pageSections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
   </script>
 </body>
 </html>
