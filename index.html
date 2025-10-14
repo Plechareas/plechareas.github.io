@@ -7,13 +7,12 @@
 
   <!-- Font Awesome for icons -->
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-  integrity="sha512-Kgk+bpQnQlDaXH7PYcKj3KJcbiIjK7vwLLRBlfDeT6sOqPKlyXy5wlM+2+ZbT+1WnmB2U6QpFwRZz0m8ZxjF2Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kgk+bpQnQlDaXH7PYcKj3KJcbiIjK7vwLLRBlfDeT6sOqPKlyXy5wlM+2+ZbT+1WnmB2U6QpFwRZz0m8ZxjF2Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
   <style>
     :root {
@@ -23,24 +22,38 @@
       --muted: #555;
       --card: #fff;
       --active: #444;
+      --shadow: rgba(0, 0, 0, 0.05);
     }
 
-    * {margin:0;padding:0;box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
+    body.dark {
+      --accent: #f5f6f7;
+      --light: #1e2a38;
+      --text: #f5f6f7;
+      --muted: #bbb;
+      --card: #27323f;
+      --active: #fff;
+      --shadow: rgba(255, 255, 255, 0.05);
+      background: var(--light);
+      color: var(--text);
+    }
+
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
     body {
       font-family: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
       background: var(--light);
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
-    a {color: var(--accent);text-decoration: none;transition: 0.2s;}
+    a {color: var(--accent); text-decoration: none; transition: 0.2s;}
     a:hover {opacity: 0.85;}
 
     /* ---------- NAVBAR ---------- */
     header {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      background: var(--card);
+      box-shadow: 0 2px 4px var(--shadow);
       padding: 1rem 5%;
       display: flex;
       align-items: center;
@@ -48,6 +61,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      transition: background 0.3s;
     }
 
     .logo {
@@ -59,6 +73,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     nav a {
@@ -69,6 +84,19 @@
     nav a.active {
       color: var(--active);
       font-weight: 700;
+    }
+
+    /* Dark mode toggle */
+    .dark-toggle {
+      font-size: 1.3rem;
+      color: var(--accent);
+      cursor: pointer;
+      transition: transform 0.2s, color 0.3s;
+    }
+
+    .dark-toggle:hover {
+      transform: rotate(20deg);
+      color: var(--active);
     }
 
     /* ---------- HERO ---------- */
@@ -119,6 +147,7 @@
       border-radius: 6px;
       display: inline-block;
       font-weight: 600;
+      transition: background 0.3s;
     }
 
     .btn:hover {
@@ -131,7 +160,7 @@
       background: var(--card);
       opacity: 0;
       transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transition: all 0.8s ease-out, background 0.3s;
     }
 
     .skills.visible {
@@ -152,8 +181,8 @@
       background: var(--light);
       border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: transform 0.2s, background 0.3s;
     }
 
     .skill-card:hover {
@@ -167,7 +196,7 @@
 
     /* ---------- PROJECTS ---------- */
     .projects {
-      padding: 4rem 5% 6rem; /* extra bottom padding for spacing */
+      padding: 4rem 5% 10rem; /* more space before footer */
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s ease-out;
@@ -190,8 +219,8 @@
       background: var(--card);
       border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: transform 0.2s, background 0.3s;
     }
 
     .project-card:hover {
@@ -210,39 +239,39 @@
 
     /* ---------- FOOTER ---------- */
     footer {
-  background: var(--card);
-  padding: 1.5rem 0;
-  text-align: center;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
-  width: 100%;
-}
+      background: var(--card);
+      padding: 2.5rem 0;
+      text-align: center;
+      box-shadow: 0 -2px 4px var(--shadow);
+      width: 100%;
+      transition: background 0.3s;
+    }
 
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin: 0 auto;
-}
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 0 auto;
+    }
 
-.footer-icons a {
-  color: var(--accent);
-  font-size: 1.5rem;
-  background: #fff;
-  padding: 0.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s, color 0.2s;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
+    .footer-icons a {
+      color: var(--accent);
+      font-size: 1.6rem;
+      background: #fff;
+      padding: 0.6rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: transform 0.2s, color 0.2s;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.footer-icons a:hover {
-  transform: translateY(-3px);
-  color: var(--active);
-}
-
+    .footer-icons a:hover {
+      transform: translateY(-3px);
+      color: var(--active);
+    }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
@@ -267,6 +296,7 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><i class="fa-solid fa-moon dark-toggle" id="darkToggle" title="Toggle Dark Mode"></i></li>
       </ul>
     </nav>
   </header>
@@ -320,21 +350,20 @@
 
   <!-- FOOTER -->
   <footer>
-  <div class="footer-icons">
-    <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
-      <i class="fa-brands fa-linkedin-in"></i>
-    </a>
-    <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
-      <i class="fa-brands fa-github"></i>
-    </a>
-    <a href="mailto:lecharesp@gmail.com" aria-label="Email">
-      <i class="fa-solid fa-envelope"></i>
-    </a>
-  </div>
-</footer>
+    <div class="footer-icons">
+      <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="mailto:lecharesp@gmail.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+  </footer>
 
-
-  <!-- ---------- ANIMATION + NAV HIGHLIGHT ---------- -->
+  <!-- ---------- ANIMATION + NAV HIGHLIGHT + DARK MODE ---------- -->
   <script>
     // Fade-in animation
     const sections = document.querySelectorAll(".hero, .skills, .projects");
@@ -366,6 +395,18 @@
           link.classList.add("active");
         }
       });
+    });
+
+    // Dark mode toggle
+    const darkToggle = document.getElementById("darkToggle");
+    darkToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      // swap icon
+      if (document.body.classList.contains("dark")) {
+        darkToggle.classList.replace("fa-moon", "fa-sun");
+      } else {
+        darkToggle.classList.replace("fa-sun", "fa-moon");
+      }
     });
   </script>
 </body>
