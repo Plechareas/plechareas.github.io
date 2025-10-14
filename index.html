@@ -5,284 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petros Lechareas | Data Science & AI</title>
 
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome (free CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"
+  />
 
   <style>
-    /* ---------- GLOBAL ---------- */
-    :root {
-      --accent-color: #1e2a38;
-      --light-bg: #f5f6f7;
-      --text-color: #222;
-      --secondary-text: #555;
-      --card-bg: #fff;
-      --highlight-color: #444;
+    :root{
+      --accent:#1e2a38; --light:#f5f6f7; --text:#222; --muted:#555; --card:#fff; --active:#444;
     }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--light);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none;transition:.2s} a:hover{opacity:.85}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* NAVBAR */
+    header{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.05);padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+    .logo{font-weight:600;color:var(--accent)}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav a{font-weight:500;color:var(--muted)}
+    nav a.active{color:var(--active);font-weight:700}
 
-    html {
-      scroll-behavior: smooth;
-    }
+    /* HERO */
+    .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:3rem;padding:4rem 5%;opacity:0;transform:translateY(30px);transition:all .8s ease-out}
+    .hero.visible{opacity:1;transform:translateY(0)}
+    .hero-left{max-width:620px}
+    .hero-right{position:relative}
+    .hero-right img{width:230px;height:230px;border-radius:50%;object-fit:cover;background:#ddd;border:4px solid #fff;box-shadow:0 0 10px rgba(0,0,0,.1)}
+    .hero h1{font-size:2.8rem;color:var(--accent);margin-bottom:.4rem}
+    .hero h2{font-weight:500;font-size:1.1rem;color:var(--muted);margin-bottom:1rem}
+    .hero p{color:var(--muted);margin-bottom:1.25rem}
+    .btn{background:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:6px;display:inline-block;font-weight:600}
+    .btn:hover{background:#2e4053}
 
-    body {
-      font-family: "Inter", "Segoe UI", sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+    /* contact icons beside the photo (right section) */
+    .iconbar-right{position:absolute;left:-70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem}
+    .iconbar-right a{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#fff;color:var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .iconbar-right a:hover{transform:translateY(-2px);color:var(--active)}
 
-    a {
-      color: var(--accent-color);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    /* SKILLS */
+    .skills{padding:4rem 5%;background:var(--card);opacity:0;transform:translateY(30px);transition:all .8s ease-out}
+    .skills.visible{opacity:1;transform:translateY(0)}
+    /* 3 columns on desktop → looks balanced; 2 on tablet; 1 on mobile */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:2rem;max-width:1000px;margin:auto;text-align:center;justify-items:stretch;justify-content:center}
+    @media (max-width: 900px){.skills-grid{grid-template-columns:repeat(2,minmax(220px,1fr))}}
+    @media (max-width: 560px){.skills-grid{grid-template-columns:1fr}}
+    .skill-card{background:var(--light);border-radius:12px;padding:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .2s}
+    .skill-card:hover{transform:translateY(-5px)}
+    .skill-card h3{color:var(--accent);margin-bottom:.4rem}
 
-    a:hover {
-      opacity: 0.8;
-    }
+    /* PROJECTS */
+    .projects{padding:4rem 5%;opacity:0;transform:translateY(30px);transition:all .8s ease-out}
+    .projects.visible{opacity:1;transform:translateY(0)}
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1000px;margin:auto}
+    .project-card{background:var(--card);border-radius:12px;padding:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .2s}
+    .project-card:hover{transform:translateY(-5px)}
+    .project-card h3{color:var(--accent);margin-bottom:.5rem}
+    .project-card p{color:var(--muted);font-size:.95rem}
 
-    h2.section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--accent-color);
-    }
-
-    p.section-subtitle {
-      text-align: center;
-      color: var(--secondary-text);
-      margin-bottom: 2rem;
-    }
-
-    /* ---------- NAVBAR ---------- */
-    header {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      padding: 1rem 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent-color);
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    nav a {
-      font-weight: 500;
-      color: var(--secondary-text);
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    nav a.active {
-      color: var(--highlight-color);
-      font-weight: 600;
-    }
-
-    /* ---------- HERO SECTION ---------- */
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 5%;
-      gap: 3rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    .hero.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hero-text {
-      max-width: 500px;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent-color);
-    }
-
-    .hero h2 {
-      font-weight: 500;
-      font-size: 1.2rem;
-      color: var(--secondary-text);
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      color: var(--secondary-text);
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      background: var(--accent-color);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      display: inline-block;
-      font-weight: 500;
-    }
-
-    .btn:hover {
-      background: #2e4053;
-    }
-
-    .hero img {
-      width: 230px;
-      height: 230px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #ddd;
-      border: 4px solid white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 1.3rem;
-    }
-
-    .social-icons a {
-      color: var(--accent-color);
-      transition: transform 0.2s;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.1);
-      color: var(--highlight-color);
-    }
-
-    /* ---------- SKILLS SECTION ---------- */
-    .skills {
-      padding: 4rem 5%;
-      background: var(--card-bg);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    .skills.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .skill-card {
-      background: var(--light-bg);
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .skill-card h3 {
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-
-    /* ---------- PROJECTS SECTION ---------- */
-    .projects {
-      padding: 4rem 5%;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    .projects.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card h3 {
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      color: var(--secondary-text);
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      text-align: center;
-      padding: 2rem 5%;
-      font-size: 0.9rem;
-      color: var(--secondary-text);
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .hero img {
-        width: 180px;
-        height: 180px;
-      }
+    /* Responsive tweaks */
+    @media (max-width: 780px){
+      .iconbar-right{position:static;transform:none;flex-direction:row;margin-bottom:1rem}
+      .hero{flex-direction:column;text-align:left}
+      .hero-right img{width:180px;height:180px}
     }
   </style>
 </head>
@@ -295,16 +83,27 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <!-- Contact removed -->
       </ul>
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero" id="home">
-  <div class="hero-left">
-      <!-- ✅ vertical icons beside the heading -->
-      <div class="iconbar" aria-label="Social links">
+    <div class="hero-left">
+      <h1>Hi, I'm Petros</h1>
+      <h2>Data Science & AI Master's Student & ML Developer</h2>
+      <p>
+        Passionate about leveraging data-driven insights and machine learning techniques
+        to solve real-world problems. Dedicated to continuous learning and building
+        AI solutions that make an impact.
+      </p>
+      <a href="mailto:lecharesp@gmail.com" class="btn">Contact Me</a>
+    </div>
+
+    <div class="hero-right">
+      <!-- ✅ Contact icons in the right section (next to the photo) -->
+      <div class="iconbar-right" aria-label="Contact links">
         <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
@@ -315,25 +114,11 @@
           <i class="fa-solid fa-envelope"></i>
         </a>
       </div>
-
-      <div class="hero-text">
-        <h1>Hi, I'm Petros</h1>
-        <h2>Data Science & AI Master's Student & ML Developer</h2>
-        <p>
-          Passionate about leveraging data-driven insights and machine learning techniques
-          to solve real-world problems. Dedicated to continuous learning and building
-          AI solutions that make an impact.
-        </p>
-        <a href="mailto:lecharesp@gmail.com" class="btn">Contact Me</a>
-      </div>
-    </div>
-
-    <div class="hero-image">
       <img src="your-photo.jpg" alt="Petros Lechareas" />
     </div>
   </section>
 
-  <!-- SKILLS SECTION -->
+  <!-- SKILLS -->
   <section class="skills" id="skills">
     <h2 class="section-title">Skills</h2>
     <p class="section-subtitle">Technologies and tools I work with</p>
@@ -342,12 +127,12 @@
       <div class="skill-card"><h3>Machine Learning</h3><p>Supervised & Unsupervised Models</p></div>
       <div class="skill-card"><h3>Deep Learning</h3><p>TensorFlow, Keras, PyTorch</p></div>
       <div class="skill-card"><h3>Data Visualization</h3><p>Matplotlib, Seaborn, Power BI</p></div>
-      <div class="skill-card"><h3>SQL & Databases</h3><p>MySQL, PostgreSQL</p></div>
       <div class="skill-card"><h3>Version Control</h3><p>Git & GitHub</p></div>
+      <!-- SQL & Databases removed -->
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section class="projects" id="projects">
     <h2 class="section-title">Projects</h2>
     <p class="section-subtitle">Some of my recent work</p>
@@ -367,56 +152,30 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <p>
-      Connect with me on
-      <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank">LinkedIn</a>
-      |
-      <a href="https://github.com/Plechareas" target="_blank">GitHub</a>
-      <br />
-      📧 <a href="mailto:lecharesp@gmail.com">lecharesp@gmail.com</a>
-      <br /><br />
-      © 2025 Petros Lechareas
-    </p>
-  </footer>
+  <!-- (Footer removed) -->
 
-  <!-- ---------- ANIMATION + NAV HIGHLIGHT SCRIPT ---------- -->
+  <!-- Animations + Active Nav -->
   <script>
-    // Fade-in animation
-    const sections = document.querySelectorAll(".hero, .skills, .projects");
-    const appearOnScroll = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    sections.forEach(section => appearOnScroll.observe(section));
+    // Fade-in on scroll
+    const fadeSections = document.querySelectorAll(".hero, .skills, .projects");
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("visible"); obs.unobserve(e.target); }});
+    }, {threshold:.2});
+    fadeSections.forEach(s => io.observe(s));
 
-    // Active navbar highlight
+    // Active nav highlight on scroll
     const navLinks = document.querySelectorAll("nav a");
-    const pageSections = document.querySelectorAll("section");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      pageSections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) {
-          current = section.getAttribute("id");
-        }
+    const allSections = document.querySelectorAll("section");
+    function setActiveOnScroll(){
+      let current = "home";
+      allSections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) current = sec.id;
       });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
-      });
-    });
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${current}`));
+    }
+    setActiveOnScroll();
+    window.addEventListener("scroll", setActiveOnScroll);
   </script>
 </body>
 </html>
