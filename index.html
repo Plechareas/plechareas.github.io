@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petros Lechareas | Data Science & AI</title>
 
-  <!-- Font Awesome for icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kgk+bpQnQlDaXH7PYcKj3KJcbiIjK7vwLLRBlfDeT6sOqPKlyXy5wlM+2+ZbT+1WnmB2U6QpFwRZz0m8ZxjF2Q=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
   <style>
     :root {
       --accent: #1e2a38;
@@ -69,6 +60,12 @@
       color: var(--accent);
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     nav ul {
       display: flex;
       gap: 2rem;
@@ -88,15 +85,20 @@
 
     /* Dark mode toggle */
     .dark-toggle {
-      font-size: 1.3rem;
-      color: var(--accent);
+      width: 26px;
+      height: 26px;
       cursor: pointer;
-      transition: transform 0.2s, color 0.3s;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+      filter: brightness(0) saturate(100%) invert(15%) sepia(10%) saturate(140%) hue-rotate(180deg);
     }
 
     .dark-toggle:hover {
       transform: rotate(20deg);
-      color: var(--active);
+      opacity: 0.8;
+    }
+
+    body.dark .dark-toggle {
+      filter: brightness(0) invert(1);
     }
 
     /* ---------- HERO ---------- */
@@ -247,36 +249,30 @@
       transition: background 0.3s;
     }
 
-    .footer-icon {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  filter: brightness(0) saturate(100%) invert(15%) sepia(10%) saturate(140%) hue-rotate(180deg);
-}
-
-    body.dark .footer-icon {
-  filter: brightness(0) invert(1);
-}
-
-
-    .footer-icons a {
-      color: var(--accent);
-      font-size: 1.6rem;
-      background: #fff;
-      padding: 0.6rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px var(--shadow);
-      transition: transform 0.2s, color 0.2s;
-      display: inline-flex;
+    .footer-icons {
+      display: flex;
       justify-content: center;
       align-items: center;
+      gap: 2rem;
+      margin: 0 auto;
+    }
+
+    .footer-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      filter: brightness(0) saturate(100%) invert(15%) sepia(10%) saturate(140%) hue-rotate(180deg);
     }
 
     .footer-icon:hover {
-  transform: translateY(-4px);
-  opacity: 0.8;
-}
+      transform: translateY(-4px);
+      opacity: 0.8;
+    }
+
+    body.dark .footer-icon {
+      filter: brightness(0) invert(1);
+    }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
@@ -301,8 +297,8 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><i class="fa-solid fa-moon dark-toggle" id="darkToggle" title="Toggle Dark Mode"></i></li>
       </ul>
+      <img src="moon.png" alt="Toggle Dark Mode" id="darkToggle" class="dark-toggle" title="Toggle Dark Mode" />
     </nav>
   </header>
 
@@ -355,19 +351,18 @@
 
   <!-- FOOTER -->
   <footer>
-  <div class="footer-icons">
-    <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
-      <img src="business.png" alt="LinkedIn" class="footer-icon" />
-    </a>
-    <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
-      <img src="github.png" alt="GitHub" class="footer-icon" />
-    </a>
-    <a href="mailto:lecharesp@gmail.com" aria-label="Email">
-      <img src="mail.png" alt="Email" class="footer-icon" />
-    </a>
-  </div>
-</footer>
-
+    <div class="footer-icons">
+      <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
+        <img src="business.png" alt="LinkedIn" class="footer-icon" />
+      </a>
+      <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
+        <img src="github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="mailto:lecharesp@gmail.com" aria-label="Email">
+        <img src="mail.png" alt="Email" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
 
   <!-- ---------- ANIMATION + NAV HIGHLIGHT + DARK MODE ---------- -->
   <script>
@@ -391,27 +386,22 @@
       let current = "";
       pageSections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
-        if (scrollY >= sectionTop) {
-          current = section.getAttribute("id");
-        }
+        if (scrollY >= sectionTop) current = section.getAttribute("id");
       });
       navLinks.forEach(link => {
         link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
+        if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
       });
     });
 
-    // Dark mode toggle
+    // Dark mode toggle with icon swap
     const darkToggle = document.getElementById("darkToggle");
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
-      // swap icon
       if (document.body.classList.contains("dark")) {
-        darkToggle.classList.replace("fa-moon", "fa-sun");
+        darkToggle.src = "sun.png";
       } else {
-        darkToggle.classList.replace("fa-sun", "fa-moon");
+        darkToggle.src = "moon.png";
       }
     });
   </script>
