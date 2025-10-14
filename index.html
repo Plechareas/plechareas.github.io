@@ -247,13 +247,18 @@
       transition: background 0.3s;
     }
 
-    .footer-icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin: 0 auto;
-    }
+    .footer-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  filter: brightness(0) saturate(100%) invert(15%) sepia(10%) saturate(140%) hue-rotate(180deg);
+}
+
+    body.dark .footer-icon {
+  filter: brightness(0) invert(1);
+}
+
 
     .footer-icons a {
       color: var(--accent);
@@ -268,10 +273,10 @@
       align-items: center;
     }
 
-    .footer-icons a:hover {
-      transform: translateY(-3px);
-      color: var(--active);
-    }
+    .footer-icon:hover {
+  transform: translateY(-4px);
+  opacity: 0.8;
+}
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
@@ -350,18 +355,19 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-icons">
-      <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
-        <i class="fa-brands fa-github"></i>
-      </a>
-      <a href="mailto:lecharesp@gmail.com" aria-label="Email">
-        <i class="fa-solid fa-envelope"></i>
-      </a>
-    </div>
-  </footer>
+  <div class="footer-icons">
+    <a href="https://www.linkedin.com/in/petros-lechareas-b91715225" target="_blank" aria-label="LinkedIn">
+      <img src="business.png" alt="LinkedIn" class="footer-icon" />
+    </a>
+    <a href="https://github.com/Plechareas" target="_blank" aria-label="GitHub">
+      <img src="github.png" alt="GitHub" class="footer-icon" />
+    </a>
+    <a href="mailto:lecharesp@gmail.com" aria-label="Email">
+      <img src="mail.png" alt="Email" class="footer-icon" />
+    </a>
+  </div>
+</footer>
+
 
   <!-- ---------- ANIMATION + NAV HIGHLIGHT + DARK MODE ---------- -->
   <script>
