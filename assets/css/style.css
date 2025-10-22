@@ -181,15 +181,16 @@
     /* ---------- SKILLS ---------- */
     .skills {
         padding: 4rem 5%;
-        background: #eef1f4;
+        background-color: #f0f2f5 !important;
+        /* soft contrast color for light mode */
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.8s ease-out, background 0.3s;
+        transition: all 0.8s ease-out, background-color 0.3s;
     }
 
+    /* Keep dark mode consistent */
     body.dark .skills {
-        background: var(--card);
-        /* darker tone in dark mode */
+        background-color: var(--card) !important;
     }
 
     .skills.visible {
