@@ -568,6 +568,16 @@
       typeWriterTitle();
     });
 
+    // Make entire project cards clickable
+    document.querySelectorAll(".project-card").forEach(card => {
+      const link = card.querySelector("a");
+      if (link) {
+        card.addEventListener("click", () => {
+          window.open(link.href, "_blank");
+        });
+      }
+    });
+
   </script>
 </body>
 
