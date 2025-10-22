@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +17,16 @@
       --shadow: rgba(0, 0, 0, 0.05);
     }
 
+    body.dark .btn {
+      background: #2b3b50;
+      /* darker blue/grey tone */
+      color: #fff;
+    }
+
+    body.dark .btn:hover {
+      background: #3f526b;
+    }
+
     body.dark {
       --accent: #f5f6f7;
       --light: #1e2a38;
@@ -28,8 +39,16 @@
       color: var(--text);
     }
 
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    html {scroll-behavior: smooth;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
       background: var(--light);
@@ -38,8 +57,15 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    a {color: var(--accent); text-decoration: none; transition: 0.2s;}
-    a:hover {opacity: 0.85;}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    a:hover {
+      opacity: 0.85;
+    }
 
     /* ---------- NAVBAR ---------- */
     header {
@@ -84,13 +110,13 @@
     }
 
     /* Dark mode toggle */
-  .dark-toggle {
-  width: 40px;
-  height: 40px;
-  background: none;
-  display: inline-block;
-  border: none;
-}
+    .dark-toggle {
+      width: 50px;
+      height: 50px;
+      background: none;
+      display: inline-block;
+      border: none;
+    }
 
 
     .dark-toggle:hover {
@@ -176,7 +202,7 @@
       grid-template-columns: repeat(3, minmax(220px, 1fr));
       gap: 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin-top: 2rem;
       text-align: center;
     }
 
@@ -199,7 +225,8 @@
 
     /* ---------- PROJECTS ---------- */
     .projects {
-      padding: 4rem 5% 10rem; /* more space before footer */
+      padding: 4rem 5% 10rem;
+      /* more space before footer */
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s ease-out;
@@ -289,6 +316,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- NAVBAR -->
   <header>
@@ -322,11 +350,26 @@
     <h2 class="section-title">Skills</h2>
     <p class="section-subtitle">Technologies and tools I work with</p>
     <div class="skills-grid">
-      <div class="skill-card"><h3>Python</h3><p>Pandas, NumPy, Scikit-learn</p></div>
-      <div class="skill-card"><h3>Machine Learning</h3><p>Supervised & Unsupervised Models</p></div>
-      <div class="skill-card"><h3>Deep Learning</h3><p>TensorFlow, Keras, PyTorch</p></div>
-      <div class="skill-card"><h3>Data Visualization</h3><p>Matplotlib, Seaborn, Power BI</p></div>
-      <div class="skill-card"><h3>Version Control</h3><p>Git & GitHub</p></div>
+      <div class="skill-card">
+        <h3>Python</h3>
+        <p>Pandas, NumPy, Scikit-learn</p>
+      </div>
+      <div class="skill-card">
+        <h3>Machine Learning</h3>
+        <p>Supervised & Unsupervised Models</p>
+      </div>
+      <div class="skill-card">
+        <h3>Deep Learning</h3>
+        <p>TensorFlow, Keras, PyTorch</p>
+      </div>
+      <div class="skill-card">
+        <h3>Data Visualization</h3>
+        <p>Matplotlib, Seaborn, Power BI</p>
+      </div>
+      <div class="skill-card">
+        <h3>Version Control</h3>
+        <p>Git & GitHub</p>
+      </div>
     </div>
   </section>
 
@@ -341,11 +384,13 @@
       </div>
       <div class="project-card">
         <h3><a href="https://github.com/Plechareas/LoanEligibility-" target="_blank">LoanEligibility</a></h3>
-        <p>A model to predict loan eligibility based on applicant financial and demographic data, using classification techniques.</p>
+        <p>A model to predict loan eligibility based on applicant financial and demographic data, using classification
+          techniques.</p>
       </div>
       <div class="project-card">
         <h3><a href="https://github.com/Plechareas/WineQuality" target="_blank">WineQuality</a></h3>
-        <p>A wine quality prediction model built with machine learning, analyzing physicochemical properties to estimate wine grades.</p>
+        <p>A wine quality prediction model built with machine learning, analyzing physicochemical properties to estimate
+          wine grades.</p>
       </div>
     </div>
   </section>
@@ -407,4 +452,5 @@
     });
   </script>
 </body>
+
 </html>
