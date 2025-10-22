@@ -333,6 +333,36 @@
       }
     }
 
+    /* ---------- CARD HOVER COLOR EFFECTS ---------- */
+
+    /* Light mode hover */
+    .skill-card:hover,
+    .project-card:hover {
+      background: #2b3b50;
+      color: #fff;
+    }
+
+    .skill-card:hover h3,
+    .skill-card:hover p,
+    .project-card:hover h3,
+    .project-card:hover p {
+      color: #fff;
+    }
+
+    /* Dark mode hover */
+    body.dark .skill-card:hover,
+    body.dark .project-card:hover {
+      background: #fff;
+      color: #2b3b50;
+    }
+
+    body.dark .skill-card:hover h3,
+    body.dark .skill-card:hover p,
+    body.dark .project-card:hover h3,
+    body.dark .project-card:hover p {
+      color: #2b3b50;
+    }
+
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       .skills-grid {
