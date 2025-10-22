@@ -187,6 +187,11 @@
         transition: all 0.8s ease-out, background 0.3s;
     }
 
+    body.dark .skills {
+        background: var(--card);
+        /* darker tone in dark mode */
+    }
+
     .skills.visible {
         opacity: 1;
         transform: translateY(0);
