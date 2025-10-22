@@ -1,0 +1,387 @@
+    :root {
+        --accent: #1e2a38;
+        --light: #f5f6f7;
+        --text: #222;
+        --muted: #555;
+        --card: #fff;
+        --active: #444;
+        --shadow: rgba(0, 0, 0, 0.05);
+    }
+
+    body.dark .btn {
+        background: #2b3b50;
+        /* darker blue/grey tone */
+        color: #fff;
+    }
+
+    body.dark .btn:hover {
+        background: #3f526b;
+    }
+
+    body.dark {
+        --accent: #f5f6f7;
+        --light: #1e2a38;
+        --text: #f5f6f7;
+        --muted: #bbb;
+        --card: #27323f;
+        --active: #fff;
+        --shadow: rgba(255, 255, 255, 0.05);
+        background: var(--light);
+        color: var(--text);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+        background: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    a:hover {
+        opacity: 0.85;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    header {
+        background: var(--card);
+        box-shadow: 0 2px 4px var(--shadow);
+        padding: 1rem 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        transition: background 0.3s;
+    }
+
+    .logo {
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+    }
+
+    nav a {
+        font-weight: 500;
+        color: var(--muted);
+    }
+
+    nav a.active {
+        color: var(--active);
+        font-weight: 700;
+    }
+
+    /* Dark mode toggle */
+    .dark-toggle {
+        width: 25px;
+        height: 25px;
+        background: none;
+        display: inline-block;
+        border: none;
+    }
+
+
+    .dark-toggle:hover {
+        transform: rotate(20deg);
+        opacity: 0.8;
+    }
+
+    body.dark .dark-toggle {
+        filter: brightness(0) invert(1);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        padding: 4rem 5%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    .hero.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-left {
+        max-width: 620px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 0.5px;
+        color: var(--accent);
+        margin-bottom: 0.4rem;
+    }
+
+    .hero h2 {
+        font-weight: 500;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 0.5px;
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+    }
+
+    .btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        display: inline-block;
+        font-weight: 600;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #394e67;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills {
+        padding: 4rem 5%;
+        background: var(--card);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out, background 0.3s;
+    }
+
+    .skills.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .skills-grid {
+        display: grid;
+        justify-content: center;
+        align-items: start;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 2rem auto 0 auto;
+        text-align: center;
+    }
+
+    .skill-card {
+        background: var(--light);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 6px var(--shadow);
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+        color: var(--accent);
+        margin-bottom: 0.4rem;
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .projects {
+        padding: 4rem 5% 10rem;
+        /* more space before footer */
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    .projects.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .project-grid {
+        display: grid;
+        justify-content: center;
+        align-items: start;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 2rem auto 0 auto;
+        text-align: center;
+    }
+
+    .project-card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 6px var(--shadow);
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+        background: var(--card);
+        padding: 2.5rem 0;
+        text-align: center;
+        box-shadow: 0 -2px 4px var(--shadow);
+        width: 100%;
+        transition: background 0.3s;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin: 0 auto;
+    }
+
+    .footer-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        filter: brightness(0) saturate(100%) invert(15%) sepia(10%) saturate(140%) hue-rotate(180deg);
+    }
+
+    .footer-icon:hover {
+        transform: translateY(-4px);
+        opacity: 0.8;
+    }
+
+    body.dark .footer-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    /* ---------- CURSOR ANIMATION FOR TYPEWRITER ---------- */
+    #heroTitle::after,
+    #heroSubtitle::after {
+        content: '|';
+        animation: blink 0.9s;
+    }
+
+    @keyframes blink {
+
+        0%,
+        50% {
+            opacity: 1;
+        }
+
+        51%,
+        100% {
+            opacity: 0;
+        }
+    }
+
+    /* ---------- CARD HOVER COLOR EFFECTS ---------- */
+
+    /* Light mode hover */
+    .skill-card:hover,
+    .project-card:hover {
+        background: #2b3b50;
+        color: #fff;
+    }
+
+    .skill-card:hover h3,
+    .skill-card:hover p,
+    .project-card:hover h3,
+    .project-card:hover p {
+        color: #fff;
+    }
+
+    .project-card a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .project-card:hover a {
+        color: #fff;
+        /* white text when hovered in light mode */
+    }
+
+    /* Dark mode hover */
+    body.dark .skill-card:hover,
+    body.dark .project-card:hover {
+        background: #fff;
+        color: #2b3b50;
+    }
+
+    body.dark .skill-card:hover h3,
+    body.dark .skill-card:hover p,
+    body.dark .project-card:hover h3,
+    body.dark .project-card:hover p {
+        color: #2b3b50;
+    }
+
+    /* Dark mode */
+    body.dark .project-card a {
+        color: var(--accent);
+    }
+
+    body.dark .project-card:hover a {
+        color: #2b3b50;
+        /* dark text when hovered in dark mode */
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(220px, 1fr));
+        }
+    }
+
+    @media (max-width: 700px) {
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+    }
