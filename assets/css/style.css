@@ -181,7 +181,7 @@
     /* ---------- SKILLS ---------- */
     .skills {
         padding: 4rem 5%;
-        background: var(--card);
+        background: #eef1f4;
         opacity: 0;
         transform: translateY(30px);
         transition: all 0.8s ease-out, background 0.3s;
