@@ -31,9 +31,9 @@ const darkToggle = document.getElementById("darkToggle");
 darkToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     if (document.body.classList.contains("dark")) {
-        darkToggle.src = "sun.png";
+        darkToggle.src = "assets/images/sun.png";
     } else {
-        darkToggle.src = "moon.png";
+        darkToggle.src = "assets/images/moon.png";
     }
 });
 
