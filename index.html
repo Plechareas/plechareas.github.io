@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petros Lechareas | Data Science & AI</title>
+  <link rel="icon" type="image/png" href="ai.png">
 
   <style>
     :root {
@@ -199,10 +200,12 @@
 
     .skills-grid {
       display: grid;
+      justify-content: center;
+      align-items: start;
       grid-template-columns: repeat(3, minmax(220px, 1fr));
       gap: 2rem;
       max-width: 1000px;
-      margin-top: 2rem;
+      margin: 2rem auto 0 auto;
       text-align: center;
     }
 
@@ -239,10 +242,13 @@
 
     .project-grid {
       display: grid;
+      justify-content: center;
+      align-items: start;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       max-width: 1000px;
-      margin-top: 2rem;
+      margin: 2rem auto 0 auto;
+      text-align: center;
     }
 
     .project-card {
@@ -302,6 +308,26 @@
       filter: brightness(0) invert(1);
     }
 
+    /* ---------- CURSOR ANIMATION FOR TYPEWRITER ---------- */
+    #heroTitle::after,
+    #heroSubtitle::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       .skills-grid {
@@ -334,8 +360,8 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-left">
-      <h1>Hi, I'm Petros</h1>
-      <h2>Data Science & AI Master's Student & ML Developer</h2>
+      <h1 id="heroTitle"></h1>
+      <h2 id="heroSubtitle"></h2>
       <p>
         Passionate about leveraging data-driven insights and machine learning techniques
         to solve real-world problems. Dedicated to continuous learning and building
@@ -450,6 +476,42 @@
         darkToggle.src = "moon.png";
       }
     });
+
+    // Typewriter effect for hero text
+    const titleText = "Hi, I'm Petros";
+    const subtitleText = "Data Science & AI Master's Student & ML Developer";
+
+    const titleElement = document.getElementById("heroTitle");
+    const subtitleElement = document.getElementById("heroSubtitle");
+
+    let titleIndex = 0;
+    let subtitleIndex = 0;
+
+    function typeWriterTitle() {
+      if (titleIndex < titleText.length) {
+        titleElement.textContent += titleText.charAt(titleIndex);
+        titleIndex++;
+        setTimeout(typeWriterTitle, 80);
+      } else {
+        setTimeout(typeWriterSubtitle, 400); // small pause before subtitle
+      }
+    }
+
+    function typeWriterSubtitle() {
+      if (subtitleIndex < subtitleText.length) {
+        subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
+        subtitleIndex++;
+        setTimeout(typeWriterSubtitle, 60);
+      }
+    }
+
+    // Clear text on reload and start typing
+    window.addEventListener("load", () => {
+      titleElement.textContent = "";
+      subtitleElement.textContent = "";
+      typeWriterTitle();
+    });
+
   </script>
 </body>
 
