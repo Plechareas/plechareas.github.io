@@ -349,6 +349,17 @@
       color: #fff;
     }
 
+    .project-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .project-card:hover a {
+      color: #fff;
+      /* white text when hovered in light mode */
+    }
+
     /* Dark mode hover */
     body.dark .skill-card:hover,
     body.dark .project-card:hover {
@@ -361,6 +372,16 @@
     body.dark .project-card:hover h3,
     body.dark .project-card:hover p {
       color: #2b3b50;
+    }
+
+    /* Dark mode */
+    body.dark .project-card a {
+      color: var(--accent);
+    }
+
+    body.dark .project-card:hover a {
+      color: #2b3b50;
+      /* dark text when hovered in dark mode */
     }
 
     /* ---------- RESPONSIVE ---------- */
