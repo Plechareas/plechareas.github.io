@@ -84,20 +84,16 @@ document.querySelectorAll(".project-card").forEach(card => {
 
 // Show More / Show Less functionality
 const showMoreBtn = document.getElementById("showMoreBtn");
-const hiddenProjects = document.querySelectorAll(".hidden-project");
+const projectGrid = document.querySelector(".project-grid");
 
-if (showMoreBtn) {
+if (showMoreBtn && projectGrid) {
     showMoreBtn.addEventListener("click", () => {
-        const isShowingMore = showMoreBtn.textContent === "Show Less";
+        projectGrid.classList.toggle("collapsed");
         
-        hiddenProjects.forEach(project => {
-            if (isShowingMore) {
-                project.style.display = "none";
-            } else {
-                project.style.display = "flex";
-            }
-        });
-        
-        showMoreBtn.textContent = isShowingMore ? "Show More" : "Show Less";
+        if (projectGrid.classList.contains("collapsed")) {
+            showMoreBtn.textContent = "Show More";
+        } else {
+            showMoreBtn.textContent = "Show Less";
+        }
     });
 }

@@ -282,7 +282,7 @@
         flex: 1;
     }
 
-    .hidden-project {
+    .project-grid.collapsed .project-card:nth-child(n+4) {
         display: none;
     }
 
