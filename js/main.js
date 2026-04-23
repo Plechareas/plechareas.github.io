@@ -81,3 +81,23 @@ document.querySelectorAll(".project-card").forEach(card => {
         });
     }
 });
+
+// Show More / Show Less functionality
+const showMoreBtn = document.getElementById("showMoreBtn");
+const hiddenProjects = document.querySelectorAll(".hidden-project");
+
+if (showMoreBtn) {
+    showMoreBtn.addEventListener("click", () => {
+        const isShowingMore = showMoreBtn.textContent === "Show Less";
+        
+        hiddenProjects.forEach(project => {
+            if (isShowingMore) {
+                project.style.display = "none";
+            } else {
+                project.style.display = "flex";
+            }
+        });
+        
+        showMoreBtn.textContent = isShowingMore ? "Show More" : "Show Less";
+    });
+}

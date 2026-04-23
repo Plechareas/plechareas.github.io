@@ -200,30 +200,36 @@
 
     .skills-grid {
         display: grid;
-        justify-content: center;
-        align-items: start;
         grid-template-columns: repeat(3, minmax(220px, 1fr));
         gap: 2rem;
         max-width: 1000px;
         margin: 2rem auto 0 auto;
         text-align: center;
+        align-items: stretch;
     }
 
-    .skill-card {
+    .skills-grid .skill-card {
         background: var(--light);
         border-radius: 12px;
         padding: 1.5rem;
         box-shadow: 0 2px 6px var(--shadow);
         transition: transform 0.2s, background 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
-    .skill-card:hover {
+    .skills-grid .skill-card:hover {
         transform: translateY(-5px);
     }
 
     .skill-card h3 {
         color: var(--accent);
         margin-bottom: 0.4rem;
+    }
+
+    .skill-card p {
+        flex: 1;
     }
 
     /* ---------- PROJECTS ---------- */
@@ -242,24 +248,26 @@
 
     .project-grid {
         display: grid;
-        justify-content: center;
-        align-items: start;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
         max-width: 1000px;
         margin: 2rem auto 0 auto;
         text-align: center;
+        align-items: stretch;
     }
 
-    .project-card {
+    .project-grid .project-card {
         background: var(--card);
         border-radius: 12px;
         padding: 1.5rem;
         box-shadow: 0 2px 6px var(--shadow);
         transition: transform 0.2s, background 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
-    .project-card:hover {
+    .project-grid .project-card:hover {
         transform: translateY(-5px);
     }
 
@@ -271,6 +279,38 @@
     .project-card p {
         color: var(--muted);
         font-size: 0.95rem;
+        flex: 1;
+    }
+
+    .hidden-project {
+        display: none;
+    }
+
+    .show-more-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+
+    .btn.secondary {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+    }
+
+    .btn.secondary:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    body.dark .btn.secondary {
+        border-color: var(--active);
+        color: var(--active);
+    }
+
+    body.dark .btn.secondary:hover {
+        background: var(--active);
+        color: var(--light);
     }
 
     /* ---------- FOOTER ---------- */
@@ -331,50 +371,50 @@
     /* ---------- CARD HOVER COLOR EFFECTS ---------- */
 
     /* Light mode hover */
-    .skill-card:hover,
-    .project-card:hover {
+    .skills-grid .skill-card:hover,
+    .project-grid .project-card:hover {
         background: #2b3b50;
         color: #fff;
     }
 
-    .skill-card:hover h3,
-    .skill-card:hover p,
-    .project-card:hover h3,
-    .project-card:hover p {
+    .skills-grid .skill-card:hover h3,
+    .skills-grid .skill-card:hover p,
+    .project-grid .project-card:hover h3,
+    .project-grid .project-card:hover p {
         color: #fff;
     }
 
-    .project-card a {
+    .project-grid .project-card a {
         color: var(--accent);
         text-decoration: none;
         transition: color 0.3s;
     }
 
-    .project-card:hover a {
+    .project-grid .project-card:hover a {
         color: #fff;
         /* white text when hovered in light mode */
     }
 
     /* Dark mode hover */
-    body.dark .skill-card:hover,
-    body.dark .project-card:hover {
+    body.dark .skills-grid .skill-card:hover,
+    body.dark .project-grid .project-card:hover {
         background: #fff;
         color: #2b3b50;
     }
 
-    body.dark .skill-card:hover h3,
-    body.dark .skill-card:hover p,
-    body.dark .project-card:hover h3,
-    body.dark .project-card:hover p {
+    body.dark .skills-grid .skill-card:hover h3,
+    body.dark .skills-grid .skill-card:hover p,
+    body.dark .project-grid .project-card:hover h3,
+    body.dark .project-grid .project-card:hover p {
         color: #2b3b50;
     }
 
     /* Dark mode */
-    body.dark .project-card a {
+    body.dark .project-grid .project-card a {
         color: var(--accent);
     }
 
-    body.dark .project-card:hover a {
+    body.dark .project-grid .project-card:hover a {
         color: #2b3b50;
         /* dark text when hovered in dark mode */
     }
